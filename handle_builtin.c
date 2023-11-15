@@ -40,3 +40,66 @@ int env_func(void)
 
 	return (0);
 }
+/**
+ * exit_func - does the exiting
+ *
+ *@tokens: tokens
+ *@buffer: buffer
+ *
+ * Return: integer
+ */
+
+int exit_func(char **tokens, char *buffer)
+{
+	int i = 0;
+	int existatus = 0;
+
+	while (tokens[i])
+		i++;
+	if (i == 1)
+	{
+		free_avv(tokens);
+		free(buffer);
+		exit(0);
+	}
+	if (_atoi(tokens[1]) == -1)
+    {
+        fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", tokens[1]);
+        return (2);
+    }
+    existatus = atoi(tokens[1]);
+    free_avv(tokens);
+    free(buffer);
+    exit(existatus);
+}
+
+/**
+ * _atoi - converts string to an integer
+ *
+ * @nptr: string to be converted
+ *
+ * Return: converted integer value or -1
+ */
+
+int _atoi(char *nptr)
+{
+    int i = 0, n = 0;
+
+    if (nptr[i] == '+')
+    {
+        i++;
+    }
+
+    while (nptr[i])
+    {
+        if (nptr[i] < '0' || nptr[i] > '9')
+        {
+            return (-1);
+        }
+
+        n = (n * 10) + (nptr[i] - '0');
+        i++;
+    }
+
+    return (n);
+}
