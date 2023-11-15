@@ -20,9 +20,7 @@ void changedir_pwd(char **args)
 		}
 		dir = malloc(sizeof(char *) * 2);
 		if (dir == NULL)
-		{
 			return;
-		}
 		dir[0] = home;
 		dir[1] = NULL;
 	}
@@ -36,9 +34,7 @@ void changedir_pwd(char **args)
 		}
 		dir = malloc(sizeof(char *) * 2);
 		if (dir == NULL)
-		{
 			return;
-		}
 		dir[0] = oldpwd;
 		dir[1] = NULL;
 	}
@@ -46,9 +42,7 @@ void changedir_pwd(char **args)
 	{
 		dir = malloc(sizeof(char *) * 2);
 		if (dir == NULL)
-		{
 			return;
-		}
 		dir[0] = args[1];
 		dir[1] = NULL;
 	}
