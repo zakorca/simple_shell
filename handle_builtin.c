@@ -30,7 +30,7 @@ int handle_builtin_(char **tokens, char *buffer)
  *
  * Return: Always 0
  */
- 
+
 int env_func(void)
 {
 	int i;
