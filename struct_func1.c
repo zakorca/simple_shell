@@ -5,16 +5,16 @@
  *
  * Return: i int
  */
- 
+
 int _strlen(char *str)
 {
-    int i = 0;
+	int i = 0;
 
-    while (str[i])
-    {
-        i++;
-    }
-    return (i);
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
 /**
  * _strcat - concatenate two strings
@@ -25,21 +25,21 @@ int _strlen(char *str)
  */
 char *_strcat(char *desti, char *sourc)
 {
-    int i = 0;
-    int j = 0;
+	int i = 0;
+	int j = 0;
 
-    while (desti[i] != '\0')
-    {
-        i++;
-    }
-    while (sourc[j] != '\0')
-    {
-        desti[i] = sourc[j];
-        i++;
-        j++;
-    }
-    desti[i] = '\0';
-    return (desti);
+	while (desti[i] != '\0')
+	{
+		i++;
+	}
+	while (sourc[j] != '\0')
+	{
+		desti[i] = sourc[j];
+		i++;
+		j++;
+	}
+	desti[i] = '\0';
+	return (desti);
 }
 /**
   * _strcpy - copy string to another.
@@ -51,16 +51,16 @@ char *_strcat(char *desti, char *sourc)
 
 char *_strcpy(char *desti, char *sourc)
 {
-    int i = 0;
+	int i = 0;
 
-    while (*(sourc + i))
-    {
-        *(desti + i) = *(sourc + i);
-        i++;
-    }
-    *(desti + i) = '\0';
+	while (*(sourc + i))
+	{
+		*(desti + i) = *(sourc + i);
+		i++;
+	}
+	*(desti + i) = '\0';
 
-    return (desti);
+	return (desti);
 }
 /**
  * _strdup - duplicate string and returns a pointr to newly allocated str.
@@ -68,24 +68,24 @@ char *_strcpy(char *desti, char *sourc)
  *
  * Return: NULL or str1.
  */
- 
+
 char *_strdup(char *str)
 {
-    char *str1;
-    unsigned int len;
+	char *str1;
+	unsigned int len;
 
-    if (str == 0)
-    {
-        return (NULL);
-    }
-    len = _strlen(str) + 1;
-    str1 = (char *)malloc(sizeof(char) * len);
-    if (str1 == 0)
-    {
-        return (NULL);
-    }
-    _memcpy(str1, str, len);
-    return (str1);
+	if (str == 0)
+	{
+		return (NULL);
+	}
+	len = _strlen(str) + 1;
+	str1 = (char *)malloc(sizeof(char) * len);
+	if (str1 == 0)
+	{
+		return (NULL);
+	}
+	_memcpy(str1, str, len);
+	return (str1);
 }
 /**
  * _memcpy - funct that copy memory area.
@@ -95,14 +95,14 @@ char *_strdup(char *str)
  *
  * Return: desti.
  */
- 
+
 char *_memcpy(char *desti, char *sourc, unsigned int n)
 {
-    unsigned int i;
+	unsigned int i;
 
-    for (i = 0; i < n; i++)
-    {
-        desti[i] = sourc[i];
-    }
-    return (desti);
+	for (i = 0; i < n; i++)
+	{
+		desti[i] = sourc[i];
+	}
+	return (desti);
 }
