@@ -1,11 +1,13 @@
 #include "shell.h"
-/**
- *  _strlen - Calculates the length of string
- * @str: pointer to a strin
- *
- * Return: i int
- */
 
+
+/**
+ *  _strlen - Calcul the length of the str
+ *
+ * @str: pointer to the string.
+ *
+ * Return: i
+ */
 int _strlen(char *str)
 {
 	int i = 0;
@@ -16,59 +18,65 @@ int _strlen(char *str)
 	}
 	return (i);
 }
+
+
 /**
- * _strcat - concatenate two strings
+ * _strcat - concat 2 strings
  *
- * @desti: destination string
- * @sourc: source srting
- * Return: desti
+ * @dest: dest string
+ * @src: source srtingg
+ *
+ * Return: dest
  */
-char *_strcat(char *desti, char *sourc)
+char *_strcat(char *dest, char *src)
 {
 	int i = 0;
 	int j = 0;
 
-	while (desti[i] != '\0')
+	while (dest[i] != '\0')
 	{
 		i++;
 	}
-	while (sourc[j] != '\0')
+	while (src[j] != '\0')
 	{
-		desti[i] = sourc[j];
+		dest[i] = src[j];
 		i++;
 		j++;
 	}
-	desti[i] = '\0';
-	return (desti);
+	dest[i] = '\0';
+	return (dest);
 }
 /**
-  * _strcpy - copy string to another.
-  * @desti: destination string
-  * @sourc: the string that we have to copy
+  * _strcpy - copy string to another..
   *
-  * Return: the pointer to desti
+  * @dest: destinat string.
+  * @src: the str that we will copy
+  *
+  * Return: pointer to dest
   */
 
-char *_strcpy(char *desti, char *sourc)
+char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
-	while (*(sourc + i))
+	while (*(src + i))
 	{
-		*(desti + i) = *(sourc + i);
+		*(dest + i) = *(src + i);
 		i++;
 	}
-	*(desti + i) = '\0';
+	*(dest + i) = '\0';
 
-	return (desti);
+	return (dest);
 }
-/**
- * _strdup - duplicate string and returns a pointr to newly allocated str.
- * @str: ptr to be duplicated.
- *
- * Return: NULL or str1.
- */
 
+
+/**
+ * _strdup - duplicate string and returns a pointer to new allocated str
+ * 
+ * @str: ptr to be duplicated
+ *
+ * Return: NULL or str1
+ */
 char *_strdup(char *str)
 {
 	char *str1;
@@ -87,22 +95,24 @@ char *_strdup(char *str)
 	_memcpy(str1, str, len);
 	return (str1);
 }
-/**
- * _memcpy - funct that copy memory area.
- * @desti: destination memory area.
- * @sourc: source memory ares.
- * @n: number of bytes to be copied.
- *
- * Return: desti.
- */
 
-char *_memcpy(char *desti, char *sourc, unsigned int n)
+
+/**
+ * _memcpy - function that copies memory area.
+ *
+ * @dest: destination memory area.
+ * @src: source memory ares.
+ * @n: num of bytes to copy
+ *
+ * Return: dest.
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int i;
 
 	for (i = 0; i < n; i++)
 	{
-		desti[i] = sourc[i];
+		dest[i] = src[i];
 	}
-	return (desti);
+	return (dest);
 }

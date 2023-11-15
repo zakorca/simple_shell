@@ -2,37 +2,36 @@
 
 
 /**
- * free_avv - free the tokens
+ * free_tok - free the tokens
  *
- * @avv: tokens
+ * @tok: tokens
  */
-void free_avv(char **avv)
+void free_tok(char **tok)
 {
 	int i = 0;
 
-	while (avv[i])
+	while (tok[i])
 	{
-		free(avv[i]);
+		free(tok[i]);
 		i++;
 	}
 }
 
-
 /**
- * execute_cmd - executes Commands
- * @avv: tokens
- * @buf: buffer
+ * execute_cmd - executes Cmds
+ * @tok: tokens
+ * @buff: buffer
  * Return: exitt
  */
-int execute_cmd(char **avv, char *buf)
+int execute_cmd(char **tok, char *buff)
 {
 	pid_t pid;
 	char *cmd = NULL;
-	int exitt = handle_builtin_(avv, buf);
+	int exitt = builtin_hundler(tok, buff);
 
 	if (exitt == -1)
 	{
-		cmd = get_cmd(avv[0]);
+		cmd = get_cmd(tok[0]);
 		if (!cmd)
 		{
 			_puts("Command not found");
@@ -46,11 +45,11 @@ int execute_cmd(char **avv, char *buf)
 		}
 		if (pid == 0)
 		{
-			if (execve(cmd, avv, envir) == -1)
+			if (execve(cmd, tok, environ) == -1)
 			{
 				perror("execve");
-				free_avv(avv);
-				free(buf);
+				free_tok(tok);
+				free(buff);
 				exit(2);
 			}
 		}
@@ -58,20 +57,21 @@ int execute_cmd(char **avv, char *buf)
 		{
 			waitpid(pid, &exitt, 0);
 			if (exitt != 0)
-			{
 				exitt = 2;
-			}
 		}
-		if (_strcmp(cmd, avv[0]) != 0)
+		if (_strcmp(cmd, tok[0]) != 0)
+		{
 			free(cmd);
+		}
 	}
 	return (exitt);
 }
 
 
 /**
- * _getenv - get envirment
- * @name: name of envirement
+ * _getenv - get the environ
+ *
+ * @name: name of the environ
  *
  * Return: ptr
  */
@@ -80,40 +80,38 @@ char *_getenv(char *name)
 	int i = 0;
 	ssize_t len = _strlen(name);
 
-	for (; envir[i]; i++)
+	for (; environ[i]; i++)
 	{
-		if (strncmp(envir[i], name, len) == 0 && envir[i][len] == '=')
+		if (strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
 		{
-			return (&envir[i][len + 1]);
+			return (&environ[i][len + 1]);
 		}
 	}
 	return (NULL);
 }
 
-
 /**
- * get_cmd - func that looks for commd
- * @command: commandd
- *
- * Return: ptr
+ * get_cmd - function that look for cmd
+ * @command: cmd
+ * Return: pointer
  */
 char *get_cmd(char *command)
 {
 	char *path, *path_copy, *path_token, *file_path;
-	int command_length, directory_length;
+	int cmd_lenght, directory_length;
 	struct stat buffer;
 
 	path = _getenv("PATH");
 	if (path)
 	{
 		path_copy = _strdup(path);
-		command_length = _strlen(command);
+		cmd_lenght = _strlen(command);
 		path_token = strtok(path_copy, ":");
 
 		while (path_token)
 		{
 			directory_length = _strlen(path_token);
-			file_path = malloc(command_length + directory_length + 2);
+			file_path = malloc(cmd_lenght + directory_length + 2);
 			_strcpy(file_path, path_token);
 			_strcat(file_path, "/");
 			_strcat(file_path, command);
@@ -140,11 +138,11 @@ char *get_cmd(char *command)
 	return (NULL);
 }
 
-
 /**
- * tokenize - parsing
- * @buffer: buffer
- * @tokens: tokens
+ * tokenize - parsing tokens
+ *
+ * @buffer: buffers
+ * @tokens: token
  *
  */
 void tokenize(char *buffer, char **tokens)

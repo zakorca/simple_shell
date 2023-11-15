@@ -2,22 +2,22 @@
 
 
 /**
- * handle_builtin_ - handle built-in cmds
+ * builtin_hundler - handle builtin comds
  *
- *@tokens: tokens
- *@buffer: buffer
+ * @tokens: tokens
+ * @buffer: buffer
  *
  * Return: int
  */
-int handle_builtin_(char **tokens, char *buffer)
+int builtin_hundler(char **tokens, char *buffer)
 {
 	if (_strcmp(tokens[0], "exit") == 0)
 	{
-		return (exit_func(tokens, buffer));
+		return (exit_function(tokens, buffer));
 	}
 	else if (_strcmp(tokens[0], "env") == 0)
 	{
-		return (env_func());
+		return (envir_function());
 	}
 	else
 	{
@@ -25,31 +25,32 @@ int handle_builtin_(char **tokens, char *buffer)
 	}
 }
 
+
 /**
- * env_func - get the env
+ * envir_function - get the env
  *
  * Return: Always 0
  */
-
-int env_func(void)
+int envir_function(void)
 {
 	int i;
 
-	for (i = 0; envir[i]; i++)
-		_puts(envir[i]);
+	for (i = 0; environ[i]; i++)
+	{
+		_puts(environ[i]);
+	}
 
 	return (0);
 }
-/**
- * exit_func - does the exiting
- *
- *@tokens: tokens
- *@buffer: buffer
- *
- * Return: integer
- */
 
-int exit_func(char **tokens, char *buffer)
+
+/**
+ * exit_function - does the exiting
+ * @tokens: tokens
+ * @buffer: buffer
+ * Return: int
+ */
+int exit_function(char **tokens, char *buffer)
 {
 	int i = 0;
 	int existatus = 0;
@@ -58,7 +59,7 @@ int exit_func(char **tokens, char *buffer)
 		i++;
 	if (i == 1)
 	{
-		free_avv(tokens);
+		free_tok(tokens);
 		free(buffer);
 		exit(0);
 	}
@@ -68,36 +69,32 @@ int exit_func(char **tokens, char *buffer)
 		return (2);
 	}
 	existatus = atoi(tokens[1]);
-	free_avv(tokens);
+	free_tok(tokens);
 	free(buffer);
 	exit(existatus);
 }
 
-/**
- * _atoi - converts string to an integer
- *
- * @nptr: string to be converted
- *
- * Return: converted integer value or -1
- */
 
-int _atoi(char *nptr)
+/**
+ * _atoi - converts str to an int
+ * @conv_ptr: str to be converted
+ * Return: converted int value or -1
+ */
+int _atoi(char *conv_ptr)
 {
 	int i = 0, n = 0;
 
-	if (nptr[i] == '+')
+	if (conv_ptr[i] == '+')
 	{
 		i++;
 	}
-
-	while (nptr[i])
+	while (conv_ptr[i])
 	{
-		if (nptr[i] < '0' || nptr[i] > '9')
+		if (conv_ptr[i] < '0' || conv_ptr[i] > '9')
 		{
 			return (-1);
 		}
-
-		n = (n * 10) + (nptr[i] - '0');
+		n = (n * 10) + (conv_ptr[i] - '0');
 		i++;
 	}
 	return (n);

@@ -2,36 +2,34 @@
 
 
 /**
- * _strncpy - function that copy a string
+ * _strncpy - function that copies a string
  *
- * @desti: destination string
- * @sourc: source srting
- * @n: int that specify the max num of chars to be copied.
+ * @dest: destinat str
+ * @src: source srting
+ * @n: int that specify the max num of char to copy
  *
- * Return: desti
+ * Return: dest
  */
-char *_strncpy(char *desti, char *sourc, int n)
+char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
 
-	for (i = 0; i < n && sourc[i] != '\0'; i++)
+	for (i = 0; i < n && src[i] != '\0'; i++)
 	{
-		desti[i] = sourc[i];
+		dest[i] = src[i];
 	}
 	while (i < n)
 	{
-		desti[i] = '\0';
+		dest[i] = '\0';
 		i++;
 	}
-	return (desti);
+	return (dest);
 }
 
 
 /**
- *  _puts - print string to stdout
- *
- * @str: pointer to string.
- *
+ *  _puts - print string to standard output
+ * @str: ptr to str.
  * Return: Always 0.
  */
 void _puts(char *str)
@@ -48,25 +46,26 @@ void _puts(char *str)
 
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * _putchar - writes char c to standard output
+ * @c: The char to print
  *
  * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * On error, -1 is returned, and errno
  */
+
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
 
-
 /**
  * _strcmp - function that compares two strings.
  *
- * @s1: pointer of the first string to be compared.
- * @s2: pointer of the second string to be compared.
- * Return: int
+ * @s1: pointer of the 1st string to be compared.
+ * @s2: pointer of the 2nd string to be compared.
+ *
+ * Return: integer
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -79,13 +78,11 @@ int _strcmp(char *s1, char *s2)
 }
 
 
-
 /**
- * _strncmp - compares 1st n byte of s1 and s2
+ * _strncmp - compares first n bytes of s1 and s2
  * @s1: string 1
  * @s2: string 2
- * @n: number of bytes to compare
- *
+ * @n: num of bytes to compare
  * Return: int
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
