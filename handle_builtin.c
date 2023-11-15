@@ -63,14 +63,14 @@ int exit_func(char **tokens, char *buffer)
 		exit(0);
 	}
 	if (_atoi(tokens[1]) == -1)
-    {
-        fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", tokens[1]);
-        return (2);
-    }
-    existatus = atoi(tokens[1]);
-    free_avv(tokens);
-    free(buffer);
-    exit(existatus);
+	{
+		fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", tokens[1]);
+		return (2);
+	}
+	existatus = atoi(tokens[1]);
+	free_avv(tokens);
+	free(buffer);
+	exit(existatus);
 }
 
 /**
@@ -83,23 +83,22 @@ int exit_func(char **tokens, char *buffer)
 
 int _atoi(char *nptr)
 {
-    int i = 0, n = 0;
+	int i = 0, n = 0;
 
-    if (nptr[i] == '+')
-    {
-        i++;
-    }
+	if (nptr[i] == '+')
+	{
+		i++;
+	}
 
-    while (nptr[i])
-    {
-        if (nptr[i] < '0' || nptr[i] > '9')
-        {
-            return (-1);
-        }
+	while (nptr[i])
+	{
+		if (nptr[i] < '0' || nptr[i] > '9')
+		{
+			return (-1);
+		}
 
-        n = (n * 10) + (nptr[i] - '0');
-        i++;
-    }
-
-    return (n);
+		n = (n * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (n);
 }
