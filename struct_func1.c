@@ -72,7 +72,7 @@ char *_strcpy(char *dest, char *src)
 
 /**
  * _strdup - duplicate string and returns a pointer to new allocated str
- * 
+ *
  * @str: ptr to be duplicated
  *
  * Return: NULL or str1
