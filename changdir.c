@@ -49,12 +49,13 @@ void changedir_pwd(char **args)
 	chang_dir(dir, args[0]);
 	free(dir);
 }
+
+
 /**
- * chang_dir - changes the working directory
+ * chang_dir - changes the current working directory
  * @dir: dir to change to
  * @cmd: name of the command
  */
-
 void chang_dir(char **dir, char *cmd)
 {
 	char *pwd = getcwd(NULL, 0);

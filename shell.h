@@ -40,4 +40,11 @@ extern char **environ;
 void changedir_pwd(char **args);
 void chang_dir(char **dir, char *cmd);
 
+
+
+char *_intstr(int num);
+void error_printer(char *argv, int count, char *cmd, char *msg);
+int strconst_len(const char *str);
+
+
 #endif
